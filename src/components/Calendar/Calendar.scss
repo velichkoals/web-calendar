@@ -59,4 +59,10 @@
       cursor: pointer;
     }
   }
+
+  &__date-picker {
+    width: 16px;
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
 }

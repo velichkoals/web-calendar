@@ -37,6 +37,7 @@
     }
     &:hover .add-icon {
       fill: $purple-color;
+      transition: all .4s ease-in-out;
     }
   }
 }
