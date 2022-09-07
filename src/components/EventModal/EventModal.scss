@@ -1,16 +1,16 @@
 @import "../../variables";
 
-.add-event__overlay {
+.event__overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(203, 203, 203, 0.56);
+  background-color: rgba(203, 203, 203, 0.4);
   z-index: 1000;
 }
 
-.add-event__modal {
+.event__modal {
   min-width: 270px;
   position: fixed;
   top: 40%;
@@ -39,5 +39,9 @@
   &__text {
     font-size: $title-sm;
     font-weight: 600;
+  }
+  &__info {
+    font-size: $small;
+    color: $grey-color;
   }
 }
