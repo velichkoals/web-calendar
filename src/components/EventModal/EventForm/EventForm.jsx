@@ -42,6 +42,11 @@ const EventForm = ({ closeModal, event }) => {
 		closeModal();
 	};
 
+	const deleteEvent = () => {
+		dispatch(deleteEventAction(event.id));
+		closeModal();
+	};
+
 	return (
 		<FormProvider {...formMethods}>
 			<form onSubmit={handleSubmit(handleEvent)} className='event__form'>
@@ -76,7 +81,7 @@ const EventForm = ({ closeModal, event }) => {
 					{event && (
 						<MdDeleteOutline
 							className='event__btn_delete'
-							onClick={() => dispatch(deleteEventAction(event.id))}
+							onClick={deleteEvent}
 						/>
 					)}
 					<input

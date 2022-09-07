@@ -31,6 +31,7 @@ export const Day = ({ day, monthIndex }) => {
 			? 'calendar__day_disabled'
 			: '';
 	};
+
 	const editEvent = (event) => {
 		setIsModalOpen(true);
 		setSelectedEvent(event);
@@ -44,22 +45,21 @@ export const Day = ({ day, monthIndex }) => {
 				</div>
 				<div className='calendar__day__item'>{day.format('ddd')}</div>
 			</div>
+			<EventModal
+				title='Edit idea item'
+				event={selectedEvent}
+				open={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+			/>
 			<div className='calendar__day__event__wrapper'>
 				{dayEvents.map((event) => (
-					<React.Fragment key={event.id}>
-						<div
-							className='calendar__day__event'
-							onClick={() => editEvent(event)}
-						>
-							{event.title || ''}
-						</div>
-						<EventModal
-							title='Edit idea item'
-							event={selectedEvent}
-							open={isModalOpen}
-							onClose={() => setIsModalOpen(false)}
-						/>
-					</React.Fragment>
+					<div
+						key={event.id}
+						className='calendar__day__event'
+						onClick={() => editEvent(event)}
+					>
+						{event.title || ''}
+					</div>
 				))}
 			</div>
 		</div>
