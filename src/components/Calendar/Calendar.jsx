@@ -6,6 +6,7 @@ import { Month } from './components/Month/Month';
 import { getMonth } from '../../helpers/getMonth';
 
 import './Calendar.scss';
+import { Modal } from '../AddEventModal/AddEventModal';
 
 export const Calendar = () => {
 	const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -19,9 +20,10 @@ export const Calendar = () => {
 	return (
 		<div className='calendar'>
 			<header className='calendar__header'>
-				<div className='add-icon__wrapper'>
+				<div className='add-icon__wrapper' onClick={() => setIsModalOpen(true)}>
 					<AddIcon className='add-icon' />
 				</div>
+				<Modal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
 				<div className='calendar__header__item'>
 					<div className='header__item__buttons'>
 						<AiOutlineLeft

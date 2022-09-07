@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import { getEvents } from '../../../../store/selectors';
+import { useSelector } from 'react-redux';
 
 export const Day = ({ day, monthIndex }) => {
+	const events = useSelector(getEvents);
+	const [dayEvents, setDayEvents] = useState([]);
+
+	useEffect(() => {
+		const dayEvent = events.filter(
+			(ev) => dayjs(ev.date).format('DD-MM-YY') === day.format('DD-MM-YY')
+		);
+		setDayEvents([...dayEvent]);
+	}, [events, day]);
+
 	const getCurrentDay = () => {
 		return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY')
 			? 'calendar__day_current'
 			: '';
 	};
 	const getCurrentMonth = () => {
-		return parseInt(day.format('MM')) !== monthIndex + 1
+		return day.format('MM') !== dayjs().month(monthIndex).format('MM')
 			? 'calendar__day_disabled'
 			: '';
 	};
@@ -21,6 +33,11 @@ export const Day = ({ day, monthIndex }) => {
 				</div>
 				<div className='calendar__day__item'>{day.format('ddd')}</div>
 			</div>
+			{dayEvents.map((event) => (
+				<div className='calendar__day__event' key={event.id}>
+					{event.title || ''}
+				</div>
+			))}
 		</div>
 	);
 };

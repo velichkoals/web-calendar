@@ -1,0 +1,43 @@
+@import "../../variables";
+
+.add-event__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(203, 203, 203, 0.56);
+  z-index: 1000;
+}
+
+.add-event__modal {
+  min-width: 270px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $white-color;
+  padding: 25px 50px;
+  z-index: 1000;
+  border-radius: 2px;
+  box-shadow: 0 0 5px 2px rgba(121,32,176,.4);
+}
+
+.modal {
+  &_close-btn {
+    width: 25px;
+    height: 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__item_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__text {
+    font-size: $title-sm;
+    font-weight: 600;
+  }
+}

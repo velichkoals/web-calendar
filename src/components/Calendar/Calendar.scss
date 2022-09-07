@@ -11,8 +11,9 @@
   }
   &__day {
     border: 1px solid $light-grey-color;
+    padding: .3rem .5rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
     &_current {
       background-color: rgba(143, 6, 234, 0.10);
@@ -25,11 +26,17 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      margin: .3rem;
       font-size: $small;
       font-weight: $bold;
     }
     &__item__date {
+      color: $purple-color;
+    }
+    &__event {
+      border-radius: 2px;
+      border: 2px solid rgba(121, 32, 176, 0.3);
+      font-size: $small;
+      margin: .2rem 0;
       color: $purple-color;
     }
   }

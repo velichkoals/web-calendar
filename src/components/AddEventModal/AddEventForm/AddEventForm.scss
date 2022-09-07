@@ -1,0 +1,65 @@
+@import "../../../variables";
+
+.add-event {
+  &__form {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__btn {
+    margin-top: 1rem;
+    align-self: flex-end;
+    padding: 5px 15px;
+    font-family: $main-font;
+    border-radius: 3px;
+    border: 1px solid #7920b0;
+    background-color: #fff;
+    text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:disabled {
+      pointer-events: none;
+      border: 1px solid $light-grey-color;
+    }
+  }
+  &__input {
+    width: 100%;
+    padding-bottom: 2px;
+    font-family: $main-font;
+    color: $grey-color;
+    border: none;
+    border-bottom: 1px solid $grey-color;
+
+    &:focus {
+      outline: none;
+    }
+    &__wrapper {
+      margin: .2rem 0;
+    }
+  }
+
+  &__textarea {
+    height: 60px;
+    resize: none;
+  }
+}
+
+.input {
+  &__label{
+    font-size: 12px;
+    color: $grey-color;
+  }
+}
+
+.form__input-err {
+  border-bottom: 1px solid $err-color;
+}
+
+.err-message {
+  color: $err-color;
+  min-height: 18px;
+  font-size: 12px;
+}
