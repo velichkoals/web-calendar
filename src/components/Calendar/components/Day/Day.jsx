@@ -35,6 +35,7 @@ export const Day = ({ day, monthIndex }) => {
 		setIsModalOpen(true);
 		setSelectedEvent(event);
 	};
+
 	return (
 		<div className={`calendar__day ${getCurrentDay()} ${getCurrentMonth()}`}>
 			<div className='calendar__day__item__wrapper'>

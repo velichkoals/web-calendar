@@ -5,16 +5,34 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { EventModal } from '../EventModal/EventModal';
 import { Month } from './components/Month/Month';
 import { getMonth } from '../../helpers/getMonth';
+import { getMonthDifference } from '../../helpers/getMonthDifference';
 
 import './Calendar.scss';
+
 export const Calendar = () => {
 	const [currentMonth, setCurrentMonth] = useState(getMonth());
-	const [currentMonthIndex, setCurrentMonthIndex] = useState(dayjs().month());
+	const monthIdx = parseInt(localStorage.getItem('monthIndex'));
+	const [currentMonthIndex, setCurrentMonthIndex] = useState(
+		monthIdx ? monthIdx : dayjs().month()
+	);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
 		setCurrentMonth(getMonth(currentMonthIndex));
+		localStorage.setItem('monthIndex', JSON.stringify(currentMonthIndex));
 	}, [currentMonthIndex]);
+
+	const changeDate = (e) => {
+		const date1 = new Date(
+			dayjs(currentMonth[3][4]).year(),
+			dayjs(currentMonth[3][4]).month()
+		);
+		const date2 = new Date(
+			dayjs(e.target.value).year(),
+			dayjs(e.target.value).month()
+		);
+		setCurrentMonthIndex(currentMonthIndex + getMonthDifference(date1, date2));
+	};
 
 	return (
 		<div className='calendar'>
@@ -41,7 +59,12 @@ export const Calendar = () => {
 							onClick={() => setCurrentMonthIndex(currentMonthIndex + 1)}
 						/>
 					</div>
-					<input type='date' className='header__item__date-picker' />
+
+					<input
+						type='month'
+						className='header__item__date-picker'
+						onChange={(e) => changeDate(e)}
+					/>
 				</div>
 			</header>
 			<Month month={currentMonth} monthIndex={currentMonthIndex} />
