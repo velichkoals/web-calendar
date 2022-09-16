@@ -7,8 +7,9 @@ import { store } from './store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<Provider store={store}>
-		<React.StrictMode>
-			<App />
-		</React.StrictMode>
+		{/*<React.StrictMode> - double render and problems with localStorage,
+		 while working with API we'll remove localStorage.setItem() in useEffect() and uncomment StrictMode*/}
+		<App />
+		{/*</React.StrictMode>*/}
 	</Provider>
 );

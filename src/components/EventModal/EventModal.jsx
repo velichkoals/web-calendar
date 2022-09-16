@@ -1,6 +1,6 @@
 import ReactDom from 'react-dom';
-import { GrClose } from 'react-icons/gr';
 import EventForm from './EventForm/EventForm';
+import { GrClose } from 'react-icons/gr';
 
 import './EventModal.scss';
 

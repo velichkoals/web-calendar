@@ -1,4 +1,14 @@
-import { ADD_EVENT, DELETE_EVENT, UPDATE_EVENT } from './actionTypes';
+import {
+	ADD_EVENT,
+	DELETE_EVENT,
+	UPDATE_EVENT,
+	GET_ALL_EVENTS,
+} from './actionTypes';
+
+export const getAllEventsAction = (payload) => ({
+	type: GET_ALL_EVENTS,
+	payload,
+});
 
 export const addEventAction = (payload) => ({
 	type: ADD_EVENT,

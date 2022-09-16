@@ -5,12 +5,12 @@ import { DescriptionInput } from './components/DescriptionInput';
 import { DateInput } from './components/DateInput';
 import { TitleInput } from './components/TitleInput';
 import { useDispatch } from 'react-redux';
-import {
-	addEventAction,
-	deleteEventAction,
-	updateEventAction,
-} from '../../../store/events/actionCreators';
 import { MdDeleteOutline } from 'react-icons/md';
+import {
+	addEvent,
+	deleteEvent,
+	updateEvent,
+} from '../../../store/events/thunk';
 
 import './EventForm.scss';
 
@@ -35,15 +35,15 @@ const EventForm = ({ closeModal, event }) => {
 			id: event ? event.id : Date.now(),
 		};
 		if (event) {
-			dispatch(updateEventAction(eventObj));
+			dispatch(updateEvent(eventObj));
 		} else {
-			dispatch(addEventAction(eventObj));
+			dispatch(addEvent(eventObj));
 		}
 		closeModal();
 	};
 
-	const deleteEvent = () => {
-		dispatch(deleteEventAction(event.id));
+	const handleDeleteEvent = () => {
+		dispatch(deleteEvent(event.id));
 		closeModal();
 	};
 
@@ -81,7 +81,7 @@ const EventForm = ({ closeModal, event }) => {
 					{event && (
 						<MdDeleteOutline
 							className='event__btn_delete'
-							onClick={deleteEvent}
+							onClick={handleDeleteEvent}
 						/>
 					)}
 					<input

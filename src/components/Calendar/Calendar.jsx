@@ -6,16 +6,30 @@ import { EventModal } from '../EventModal/EventModal';
 import { Month } from './components/Month/Month';
 import { getMonth } from '../../helpers/getMonth';
 import { getMonthDifference } from '../../helpers/getMonthDifference';
+import { getAllEvents } from '../../store/events/thunk';
+import { useDispatch, useSelector } from 'react-redux';
+import { getEvents } from '../../store/selectors';
 
 import './Calendar.scss';
 
 export const Calendar = () => {
+	const events = useSelector(getEvents);
+	const dispatch = useDispatch();
 	const [currentMonth, setCurrentMonth] = useState(getMonth());
 	const monthIdx = parseInt(localStorage.getItem('monthIndex'));
 	const [currentMonthIndex, setCurrentMonthIndex] = useState(
 		monthIdx ? monthIdx : dayjs().month()
 	);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	useEffect(() => {
+		dispatch(getAllEvents());
+	}, []);
+
+	// Unnecessary if we are working with API
+	useEffect(() => {
+		localStorage.setItem('events', JSON.stringify(events));
+	}, [events]);
 
 	useEffect(() => {
 		setCurrentMonth(getMonth(currentMonthIndex));

@@ -17,10 +17,6 @@ export const Day = ({ day, monthIndex }) => {
 		setDayEvents([...dayEvent]);
 	}, [events, day]);
 
-	useEffect(() => {
-		localStorage.setItem('events', JSON.stringify(events));
-	}, [events]);
-
 	const getCurrentDay = () => {
 		return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY')
 			? 'calendar__day_current'
