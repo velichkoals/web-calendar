@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { useForm, FormProvider } from 'react-hook-form';
-import { DescriptionInput } from './components/DescriptionInput';
-import { DateInput } from './components/DateInput';
-import { TitleInput } from './components/TitleInput';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { MdDeleteOutline } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 import {
 	addEvent,
 	deleteEvent,
 	updateEvent,
 } from '../../../store/events/thunk';
+import { DateInput } from './components/DateInput';
+import { DescriptionInput } from './components/DescriptionInput';
+import { TitleInput } from './components/TitleInput';
 
 import './EventForm.scss';
 
@@ -53,10 +53,10 @@ const EventForm = ({ closeModal, event }) => {
 				<TitleInput
 					name={'title'}
 					options={{
-						required: 'This field is required.',
+						required: `Це поле є обов'язковим.`,
 						minLength: {
 							value: 3,
-							message: 'Field should include min. 3 characters',
+							message: 'Поле має включати мін. 3 символи.',
 						},
 					}}
 					title={title}
@@ -72,7 +72,7 @@ const EventForm = ({ closeModal, event }) => {
 				<DateInput
 					name={'date'}
 					options={{
-						required: 'This field is required.',
+						required: `Це поле є обов'язковим.`,
 					}}
 					date={date}
 					errors={errors}

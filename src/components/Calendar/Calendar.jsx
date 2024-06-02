@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { ReactComponent as AddIcon } from '../../assets/add-icon.svg';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-import { EventModal } from '../EventModal/EventModal';
-import { Month } from './components/Month/Month';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as AddIcon } from '../../assets/add-icon.svg';
 import { getMonth } from '../../helpers/getMonth';
 import { getMonthDifference } from '../../helpers/getMonthDifference';
 import { getAllEvents } from '../../store/events/thunk';
-import { useDispatch, useSelector } from 'react-redux';
 import { getEvents } from '../../store/selectors';
+import { EventModal } from '../EventModal/EventModal';
+import { Month } from './components/Month/Month';
 
 import './Calendar.scss';
 
@@ -55,7 +55,7 @@ export const Calendar = () => {
 					<AddIcon className='add-icon' />
 				</div>
 				<EventModal
-					title='Add new idea item'
+					title='Додати нову подію'
 					open={isModalOpen}
 					onClose={() => setIsModalOpen(false)}
 				/>
