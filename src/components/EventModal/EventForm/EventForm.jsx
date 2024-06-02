@@ -49,7 +49,7 @@ const EventForm = ({ closeModal, event }) => {
 
 	return (
 		<FormProvider {...formMethods}>
-			<form onSubmit={handleSubmit(handleEvent)} className='event__form'>
+			<form onSubmit={handleSubmit(handleEvent)} className="event__form">
 				<TitleInput
 					name={'title'}
 					options={{
@@ -77,17 +77,17 @@ const EventForm = ({ closeModal, event }) => {
 					date={date}
 					errors={errors}
 				/>
-				<div className='event__buttons__wrapper'>
+				<div className="event__buttons__wrapper">
 					{event && (
 						<MdDeleteOutline
-							className='event__btn_delete'
+							className="event__btn_delete"
 							onClick={handleDeleteEvent}
 						/>
 					)}
 					<input
-						type='submit'
-						className='event__btn'
-						value='save'
+						type="submit"
+						className="event__btn"
+						value="Зберегти"
 						disabled={!isDirty || !isValid}
 					/>
 				</div>
