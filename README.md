@@ -1,4 +1,4 @@
-## Link to deployment - https://genesis-calendar-task.netlify.app
+## Link to deployment - https://web-student-platform.netlify.app
 
 <h3>Used libs:</h3>
 
